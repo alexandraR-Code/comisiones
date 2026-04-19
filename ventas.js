@@ -11,31 +11,49 @@ function calcularComision(numeroVentas, precioProducto){
 }
 
 function calcular(){
-    //Recuperamos propiedades de las caja de texto
-    let componenteSueldBase = document.getElementById("txtSueldoBase");
-    let componenteVenta = document.getElementById("txtVentas");
-    let componentePrecio = document.getElementById("txtPrecio");
+
+    //OPCION 1//
+    //*Recuperamos propiedades de las caja de texto*//
+   // let componenteSueldBase = document.getElementById("txtSueldoBase");
+   // let componenteVenta = document.getElementById("txtVentas");
+    //let componentePrecio = document.getElementById("txtPrecio");
+   //----------------------------------------------------------//
+    //*Recuperamos el valor de las cajas de texto*//
+    //let sueldoBaseStr = componenteSueldBase.value;
+    //let ventaStr= componenteVenta.value;
+    //let precioStr  =componentePrecio.value;
+
+    //OPCION 2 UTILIZANDO LA FUNCION GENERICA DE UTILITARIOS.JS//
+    //(funtion recuperText)
+    let sueldoBaseStr = recuperarText("txtSueldoBase");
+    let ventasStr = recuperarText("txtVentas");
+    let precioStr = recuperarText("txtPrecio");
     
-    //Recuperamos el valor de las cajas de texto 
-
-    let sueldoBaseStr = componenteSueldBase.value;
-    let ventaStr= componenteVenta.value;
-    let precioStr  =componentePrecio.value;
-
+    //-----------------------------------------------------------
+    //OPCION 1 //
     //Convertimos en texto a numero 
+    //let sueloBase = parseFloat(sueldoBaseStr);
+    //let numeroVentas = parseFloat(ventaStr);
+    //let precioProductos =parseFloat(precioStr);
 
-    let sueloBase = parseFloat(sueldoBaseStr);
-    let numeroVentas = parseFloat(ventaStr);
-    let precioProductos =parseFloat(precioStr);
+    //OPCION 2 UTILIZANDO LA FUNCION GENERICA DE UTILITARIOS
+    //(funtion recuperarFloat)
+
+    let sueldoBase = recuperarFloat("txtSueldoBase");
+    let numeroVentas = recuperarFloat("txtVentas");
+    let precioProductos = recuperarFloat("txtPrecio");
+    //----------------------------------------------------
+
+
 
     let comision = calcularComision(numeroVentas, precioProductos);
-    let total = sueloBase + comision;
+    let total = sueldoBase + comision;
 
     let spSueldoBase = document.getElementById("spSueldoBase");
     let spComision = document.getElementById("spComision");
     let spTotal = document.getElementById("spTotal");
 
-    spSueldoBase.textContent = sueloBase;
+    spSueldoBase.textContent = sueldoBase;
     spComision.textContent = comision;
     spTotal.textContent = total;
 }
