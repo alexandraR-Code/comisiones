@@ -139,4 +139,11 @@ p {
     button {
         font-size: 0.95rem;
     }
+    small{
+    color: red;
+    font-style: italic;
+    display: block;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
 }

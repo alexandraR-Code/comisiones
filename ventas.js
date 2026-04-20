@@ -9,8 +9,43 @@ function calcularComision(numeroVentas, precioProducto){
     }
     return comision;
 }
+function validarCampo(idInput, idError){
+    let valor = recuperarText(idInput);
+    let error = document.getElementById(idError);
+
+    // vacío
+    if(valor === ""){
+        error.textContent = "Campo obligatorio";
+        return false;
+    }
+
+    // solo números
+    if(!/^[0-9]+$/.test(valor)){
+        error.textContent = "Solo números";
+        return false;
+    }
+
+    // máximo 5 dígitos
+    if(valor.length > 5){
+        error.textContent = "Máximo 5 dígitos";
+        return false;
+    }
+
+    error.textContent = "";
+    return true;
+}
+
 
 function calcular(){
+    let v1 = validarCampo("txtSueldoBase","errSueldo");
+    let v2 = validarCampo("txtVentas","errVentas");
+    let v3 = validarCampo("txtPrecio","errPrecio");
+
+    if(!v1 || !v2 || !v3){
+        return;
+    }
+
+    // resto de tu código igual...
 
     //OPCION 1//
     //*Recuperamos propiedades de las caja de texto*//
@@ -43,8 +78,6 @@ function calcular(){
     let numeroVentas = recuperarFloat("txtVentas");
     let precioProductos = recuperarFloat("txtPrecio");
     //----------------------------------------------------
-
-
 
     let comision = calcularComision(numeroVentas, precioProductos);
     let total = sueldoBase + comision;
